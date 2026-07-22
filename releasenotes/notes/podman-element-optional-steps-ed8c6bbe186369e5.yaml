@@ -1,0 +1,9 @@
+---
+fixes:
+  - |
+    The ``ironic-python-agent-podman`` element no longer fails the image
+    build when no container steps file is present at the default path. A
+    ramdisk with no baked steps is the normal case for the runbook and
+    deploy template workflow, so requiring one made the primary documented
+    workflow impossible to build for. A missing file is still an error when
+    ``DIB_STEPS_FILE_PATH`` was set explicitly.

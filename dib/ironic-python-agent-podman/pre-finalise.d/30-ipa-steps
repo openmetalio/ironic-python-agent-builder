@@ -3,8 +3,14 @@
 # Copy the YAML file to the ramdisk location
 if [[ -f $STEPS_FILE_PATH ]]; then
     sudo cp $STEPS_FILE_PATH $STEPS_FILE
-    echo "Local mysteps.yaml copied to ramdisk: $STEPS_FILE"
-else
-    echo "No valid mysteps.yaml file found at $STEPS_FILE_PATH. Please provide a valid file or check the default path."
+    echo "Container steps file copied to ramdisk: $STEPS_FILE"
+elif [[ -n ${DIB_STEPS_FILE_PATH:-} ]]; then
+    echo "DIB_STEPS_FILE_PATH is set but $STEPS_FILE_PATH does not exist."
     exit 1
+else
+    # A ramdisk with no baked steps is the normal case for the runbook and
+    # deploy template workflow, so the default path being absent is not an
+    # error.
+    echo "No container steps file at $STEPS_FILE_PATH, building without one."
+    echo "Steps can still come from runbooks and deploy templates."
 fi
