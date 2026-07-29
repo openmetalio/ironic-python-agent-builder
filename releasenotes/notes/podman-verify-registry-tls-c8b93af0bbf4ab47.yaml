@@ -1,0 +1,6 @@
+---
+upgrade:
+  - |
+    The ``ironic-python-agent-podman`` element now verifies registry TLS by
+    default. Override ``DIB_PULL_OPTIONS`` and ``DIB_RUN_OPTIONS`` to keep
+    ``--tls-verify=false`` for a registry serving plain HTTP.

@@ -13,8 +13,8 @@ export CONTAINER_STEPS_FILE="${DIB_CONTAINER_STEPS_FILE:-/etc/ironic-python-agen
 export RUNNER="${DIB_RUNNER:-podman}"
 # NOTE(cid): these are list-valued in the agent, and lists split on commas,
 # not whitespace. A space separated value reaches the runtime as one argument.
-export PULL_OPTIONS="${DIB_PULL_OPTIONS:---tls-verify=false}"
-export RUN_OPTIONS="${DIB_RUN_OPTIONS:---rm,--network=host,--tls-verify=false}"
+export PULL_OPTIONS="${DIB_PULL_OPTIONS:---tls-verify=true}"
+export RUN_OPTIONS="${DIB_RUN_OPTIONS:---rm,--network=host,--tls-verify=true}"
 
 # Steps Config
 STEPS_INSIDEDIR=/etc/ironic-python-agent.d
